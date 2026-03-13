@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MAGDIEL ¢ents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Caveat:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=IM+Fell+English:ital@1&display=swap" rel="stylesheet">
+<style>
+/* ROOT */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blk: #080808;
+  --off: #f0ece0;
+  --warm: #c8b89a;
+  --dust: #7a6a58;
+  --teal: #5eccd8;
+  --r1: rgba(240,236,224,0.07);
+  --r2: rgba(240,236,224,0.15);
+}
+html, body {
+  background: var(--blk);
+  color: var(--off);
+  font-family: 'Space Mono', monospace;
+  overflow-x: hidden;
+}
+
+/* LOGO — MAGDIEL ¢ents, all Bebas Neue, ¢ is teal inline */
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: var(--off);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.logo .cent-char {
+  background: linear-gradient(170deg, #1a4a9a, #5eccd8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* NAV */
+.mc-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; height: 52px;
+  border-bottom: 1px solid var(--r2);
+  background: rgba(8,8,8,0.96);
+  backdrop-filter: blur(12px);
+}
+.mc-nav-links { display: flex; gap: 28px; list-style: none; }
+.mc-nav-links a {
+  font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--dust); text-decoration: none; transition: color 0.2s;
+}
+.mc-nav-links a:hover { color: var(--teal); }
+
+/* HERO */
+.mc-hero {
+  margin-top: 52px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 52px);
+  border-bottom: 1px solid var(--r2);
+}
+.mc-hero-vis {
+  position: relative;
+  background: var(--blk);
+  border-right: 1px solid var(--r2);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hero-ghost-cent {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(240px, 36vw, 460px); line-height: 1;
+  background: linear-gradient(160deg, #091428 0%, #122244 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  pointer-events: none; user-select: none; opacity: 0.7;
+}
+.hero-main-cent {
+  position: relative; z-index: 2;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(120px, 18vw, 230px); line-height: 1;
+  background: linear-gradient(170deg, #0f38a8 0%, #2878c0 40%, #5eccd8 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 60px rgba(94,204,216,0.1));
+}
+/* scanlines */
+.mc-hero-vis::after {
+  content: ''; position: absolute; inset: 0; z-index: 3;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.09) 3px, rgba(0,0,0,0.09) 4px);
+  pointer-events: none;
+}
+
+.mc-hero-copy {
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: clamp(40px, 5.5vw, 76px);
+  background: var(--blk);
+}
+.mc-eyebrow {
+  font-size: 8px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 24px;
+}
+.mc-h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(46px, 6.5vw, 86px);
+  line-height: 0.92; letter-spacing: -0.5px;
+  color: var(--off); margin-bottom: 28px;
+}
+.mc-h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, #2878c0, #5eccd8);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.mc-subtitle {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: clamp(18px, 2.5vw, 28px);
+  color: var(--dust); line-height: 1.5; margin-bottom: 42px;
+}
+.mc-sig {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(30px, 4vw, 48px);
+  color: var(--teal); opacity: 0.48; margin-bottom: 18px;
+}
+.mc-meta {
+  font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(240,236,224,0.18);
+  border-top: 1px solid var(--r1); padding-top: 20px;
+  display: flex; gap: 24px;
+}
+
+/* TICKER */
+.mc-ticker {
+  overflow: hidden; white-space: nowrap; background: var(--blk);
+  border-bottom: 1px solid var(--r2); padding: 10px 0;
+}
+.mc-ticker-track {
+  display: inline-block;
+  font-size: 8px; letter-spacing: 4px; text-transform: uppercase;
+  color: rgba(240,236,224,0.15);
+  animation: mc-tick 28s linear infinite;
+}
+.mc-ticker-track .tc { color: var(--teal); }
+@keyframes mc-tick {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* SECTION HEADER */
+.mc-sh {
+  font-size: 7px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--dust); padding: 13px 32px;
+  border-bottom: 1px solid var(--r1); background: var(--blk);
+  display: flex; align-items: center; gap: 14px;
+}
+.mc-sh::after { content: ''; flex: 1; height: 1px; background: var(--r1); }
+
+/* DISPATCHES */
+.mc-posts {
+  display: grid; grid-template-columns: 1.8fr 1fr 1fr;
+  border-bottom: 1px solid var(--r2); background: var(--blk);
+}
+.mc-post {
+  padding: 28px 24px;
+  border-right: 1px solid var(--r1);
+  position: relative; overflow: hidden; cursor: pointer;
+  transition: background 0.25s;
+}
+.mc-post:last-child { border-right: none; }
+.mc-post:hover { background: rgba(240,236,224,0.018); }
+.mc-post:hover .mc-arr { opacity: 1; transform: translateX(0); }
+.mc-pnum {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px; line-height: 1;
+  color: rgba(240,236,224,0.04); margin-bottom: 8px;
+}
+.mc-ptag {
+  font-size: 7px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 10px;
+}
+.mc-ptitle {
+  font-family: 'IM Fell English', serif; font-style: italic;
+  font-size: clamp(13px, 1.4vw, 17px);
+  color: var(--warm); line-height: 1.45; margin-bottom: 14px;
+}
+.mc-pmark {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 11px; color: rgba(240,236,224,0.14);
+}
+.mc-arr {
+  position: absolute; bottom: 24px; right: 20px;
+  font-size: 18px; color: var(--teal);
+  opacity: 0; transform: translateX(-6px); transition: all 0.22s;
+}
+
+/* FEATURE */
+.mc-feature {
+  display: grid; grid-template-columns: 55% 45%;
+  border-bottom: 1px solid var(--r2);
+  min-height: 360px; background: var(--blk);
+}
+.mc-feat-main {
+  padding: clamp(32px, 4.5vw, 58px);
+  border-right: 1px solid var(--r1);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.mc-feat-kicker {
+  font-size: 7px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 18px;
+}
+.mc-feat-head {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 5.8vw, 72px);
+  line-height: 0.92; color: var(--off);
+  letter-spacing: -0.5px; margin-bottom: 22px;
+}
+.mc-feat-body {
+  font-size: 10px; line-height: 2.1;
+  color: rgba(240,236,224,0.27); font-style: italic;
+}
+.mc-feat-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--teal); text-decoration: none;
+  margin-top: 26px; transition: gap 0.2s;
+}
+.mc-feat-link:hover { gap: 14px; }
+.mc-feat-aside {
+  padding: clamp(32px, 4.5vw, 58px);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.mc-aside-ghost {
+  position: absolute;
+  font-family: 'UnifrakturMaguntia', cursive;
+  color: rgba(240,236,224,0.03);
+  pointer-events: none; user-select: none;
+}
+.mc-aside-label {
+  font-size: 7px; letter-spacing: 4px; text-transform: uppercase;
+  color: rgba(240,236,224,0.18);
+  border-bottom: 1px solid var(--r1);
+  padding-bottom: 10px; margin-bottom: 18px;
+  position: relative; z-index: 2;
+}
+.mc-aside-row {
+  margin-bottom: 16px; padding-bottom: 16px;
+  border-bottom: 1px solid rgba(240,236,224,0.04);
+  position: relative; z-index: 2;
+}
+.mc-aside-row:last-child { border-bottom: none; margin-bottom: 0; }
+.mc-aside-row strong {
+  display: block; font-size: 9px; color: var(--teal);
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;
+}
+.mc-aside-row span { font-size: 8px; color: rgba(240,236,224,0.22); line-height: 1.9; }
+
+/* MANIFESTO */
+.mc-manifesto {
+  padding: clamp(48px, 6.5vw, 92px) clamp(32px, 5vw, 72px);
+  border-bottom: 1px solid var(--r2);
+  display: grid; grid-template-columns: 1fr 2.4fr; gap: 56px;
+  align-items: start; background: var(--blk);
+}
+.mc-mani-label {
+  font-size: 7px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--dust); padding-top: 10px;
+}
+.mc-mani-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(26px, 4vw, 48px);
+  line-height: 1.08; letter-spacing: 0.5px;
+  color: rgba(240,236,224,0.12);
+}
+.mc-mani-text em { font-style: normal; color: rgba(240,236,224,0.72); }
+
+/* FOOTER */
+.mc-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 32px;
+  border-top: 1px solid var(--r2);
+  background: var(--blk);
+}
+.mc-footer-copy {
+  font-size: 7px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(240,236,224,0.1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .mc-hero, .mc-posts, .mc-feature, .mc-manifesto { grid-template-columns: 1fr; }
+  .mc-hero-vis { min-height: 46vw; border-right: none; border-bottom: 1px solid var(--r2); }
+  .mc-post { border-right: none; border-bottom: 1px solid var(--r1); }
+  .mc-feat-main { border-right: none; border-bottom: 1px solid var(--r1); }
+  .mc-manifesto { gap: 16px; }
+  .mc-nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="mc-nav">
+  <a href="#" class="logo">MAGDIEL <span class="cent-char">¢</span>ents</a>
+  <ul class="mc-nav-links">
+    <li><a href="#">Archive</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="mc-hero">
+  <div class="mc-hero-vis">
+    <span class="hero-ghost-cent">¢</span>
+    <span class="hero-main-cent">¢</span>
+  </div>
+  <div class="mc-hero-copy">
+    <div>
+      <div class="mc-eyebrow">/// MAGDIEL ¢ents 1997 — Vol. I</div>
+      <h1 class="mc-h1">MICHIGAN<br>LAKESIDE–<br><em>DRIFTWOOD</em><br>FROM HABANA</h1>
+      <div class="mc-subtitle">It's Got 2 Make<br>(¢/S)ents/Ense</div>
+    </div>
+    <div>
+      <div class="mc-sig">MAGDIEL ¢ents</div>
+      <div class="mc-meta">
+        <span>Po'try</span><span>Trap</span><span>Method</span><span>1997</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="mc-ticker" aria-hidden="true">
+  <span class="mc-ticker-track">
+    PO'TRY <span class="tc">¢</span> TRAP <span class="tc">¢</span> FICTIONAL ORDINANCE <span class="tc">¢</span> MAGDIEL ¢ENTS 1997 <span class="tc">¢</span> SUICIDAL TENDENCIES <span class="tc">¢</span> CHOSEN MAN <span class="tc">¢</span> LOVER BOY <span class="tc">¢</span> SOUL SOPA PATINE <span class="tc">¢</span> FICTING METHOD <span class="tc">¢</span> MARBLE <span class="tc">¢</span> &nbsp;&nbsp;&nbsp;
+    PO'TRY <span class="tc">¢</span> TRAP <span class="tc">¢</span> FICTIONAL ORDINANCE <span class="tc">¢</span> MAGDIEL ¢ENTS 1997 <span class="tc">¢</span> SUICIDAL TENDENCIES <span class="tc">¢</span> CHOSEN MAN <span class="tc">¢</span> LOVER BOY <span class="tc">¢</span> SOUL SOPA PATINE <span class="tc">¢</span> FICTING METHOD <span class="tc">¢</span> MARBLE <span class="tc">¢</span> &nbsp;&nbsp;&nbsp;
+  </span>
+</div>
+
+<!-- DISPATCHES -->
+<div class="mc-sh">/// Dispatches</div>
+<div class="mc-posts">
+  <article class="mc-post">
+    <div class="mc-pnum">01</div>
+    <div class="mc-ptag">/// Featured Dispatch</div>
+    <p class="mc-ptitle">(¢/S)ents/Ense — a reading on coins, sky, and the grammar of stretched meaning</p>
+    <div class="mc-pmark">Po'try — Trap — Method</div>
+    <span class="mc-arr">→</span>
+  </article>
+  <article class="mc-post">
+    <div class="mc-pnum">02</div>
+    <div class="mc-ptag">/// Vol. I</div>
+    <p class="mc-ptitle">Driftwood from Habana — first movement, lakeside frequency</p>
+    <div class="mc-pmark">Michigan — Lakeside</div>
+    <span class="mc-arr">→</span>
+  </article>
+  <article class="mc-post">
+    <div class="mc-pnum">03</div>
+    <div class="mc-ptag">/// Archive</div>
+    <p class="mc-ptitle">The ¢ before the name — on marks, identity, and signed streets</p>
+    <div class="mc-pmark">Identity — Signal</div>
+    <span class="mc-arr">→</span>
+  </article>
+</div>
+
+<!-- FEATURE -->
+<div class="mc-sh">/// Latest Writing</div>
+<section class="mc-feature">
+  <div class="mc-feat-main">
+    <div>
+      <div class="mc-feat-kicker">/// On the road — the ink still wet</div>
+      <h2 class="mc-feat-head">STREET<br>LEVEL<br>FREQUENCY</h2>
+      <p class="mc-feat-body">The kind of writing that happens when the city stops making sense and the only grammar left is the one you invent on the way down. Trap. Fictional. Ordinance. Method. ¢. Every block a sentence. Every siren a punctuation mark. No metaphor needed when the real thing hits harder.</p>
+    </div>
+    <a href="#" class="mc-feat-link">Read Dispatch →</a>
+  </div>
+  <div class="mc-feat-aside">
+    <span class="mc-aside-ghost" style="font-size:94px;top:8px;left:-10px;transform:rotate(-4deg)">TRAP</span>
+    <span class="mc-aside-ghost" style="font-size:56px;bottom:52px;right:-4px;transform:rotate(5deg)">¢ENTS</span>
+    <span class="mc-aside-ghost" style="font-size:36px;top:50%;left:18px;transform:rotate(-2deg)">METHOD</span>
+    <div class="mc-aside-label">// Signal Index</div>
+    <div class="mc-aside-row">
+      <strong>Identity</strong>
+      <span>MAGDIEL ¢ents — the ¢ is the signature, the logo, the mark</span>
+    </div>
+    <div class="mc-aside-row">
+      <strong>Palette</strong>
+      <span>Navy → Teal → Cyan — the ¢ gradient against raw black</span>
+    </div>
+    <div class="mc-aside-row">
+      <strong>Format</strong>
+      <span>Long-form. Wordplay mandatory. No summaries. Full read or nothing.</span>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="mc-manifesto">
+  <div class="mc-mani-label">/// Doctrine</div>
+  <div class="mc-mani-text">
+    TRAP IS NOT A GENRE. <em>TRAP IS A GRAMMAR.</em>
+    FICTION IS NOT AN ESCAPE. <em>FICTION IS AN ORDINANCE.</em>
+    THE ¢ IS NOT A LOGO. <em>THE ¢ IS A SENTENCE.</em>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="mc-footer">
+  <a href="#" class="logo">MAGDIEL <span class="cent-char">¢</span>ents</a>
+  <div class="mc-footer-copy">MAGDIEL ¢ents 1997 — All Dispatches Reserved</div>
+</footer>
+
+</body>
+</html>
