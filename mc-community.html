@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MAGDIEL ¢ents — Community</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Caveat:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=IM+Fell+English:ital@1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blk: #080808; --off: #f0ece0; --warm: #c8b89a; --dust: #7a6a58; --teal: #5eccd8;
+  --r1: rgba(240,236,224,0.07); --r2: rgba(240,236,224,0.15);
+  --anno-bg: rgba(94,204,216,0.04);
+  --anno-border: rgba(94,204,216,0.25);
+}
+html, body { background: var(--blk); color: var(--off); font-family: 'Space Mono', monospace; overflow-x: hidden; }
+.logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: var(--off); text-decoration: none; white-space: nowrap; }
+.logo .cc { background: linear-gradient(170deg,#1a4a9a,#5eccd8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.mc-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 52px; border-bottom: 1px solid var(--r2); background: rgba(8,8,8,0.96); backdrop-filter: blur(12px); }
+.mc-nav-links { display: flex; gap: 28px; list-style: none; }
+.mc-nav-links a { font-size: 8px; letter-spacing: 3px; text-transform: uppercase; color: var(--dust); text-decoration: none; transition: color 0.2s; }
+.mc-nav-links a:hover, .mc-nav-links a.active { color: var(--teal); }
+.mc-sh { font-size: 7px; letter-spacing: 5px; text-transform: uppercase; color: var(--dust); padding: 13px 32px; border-bottom: 1px solid var(--r1); background: var(--blk); display: flex; align-items: center; gap: 14px; }
+.mc-sh::after { content: ''; flex: 1; height: 1px; background: var(--r1); }
+
+/* TICKER */
+.mc-ticker { overflow: hidden; white-space: nowrap; background: var(--blk); border-bottom: 1px solid var(--r2); padding: 10px 0; }
+.mc-ticker-track { display: inline-block; font-size: 8px; letter-spacing: 4px; text-transform: uppercase; color: rgba(240,236,224,0.15); animation: mc-tick 28s linear infinite; }
+.mc-ticker-track .tc { color: var(--teal); }
+@keyframes mc-tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* COMMUNITY HERO */
+.cm-hero {
+  margin-top: 52px;
+  padding: clamp(52px,7vw,90px) clamp(32px,6vw,72px);
+  border-bottom: 1px solid var(--r2);
+  display: grid; grid-template-columns: 1fr 320px; gap: 52px; align-items: end;
+}
+.cm-kicker { font-size: 8px; letter-spacing: 5px; text-transform: uppercase; color: var(--teal); margin-bottom: 20px; }
+.cm-h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(60px,9vw,112px); line-height: 0.9; color: var(--off); letter-spacing: -2px; margin-bottom: 20px; }
+.cm-h1 em { font-style: normal; background: linear-gradient(90deg,#1a4a9a,#5eccd8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.cm-sub { font-size: 12px; line-height: 2; color: rgba(240,236,224,0.4); font-style: italic; max-width: 580px; }
+.cm-stats { display: flex; flex-direction: column; gap: 14px; }
+.cm-stat { padding: 14px 0; border-bottom: 1px solid var(--r1); }
+.cm-stat:last-child { border-bottom: none; }
+.cm-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 42px; line-height: 1; background: linear-gradient(90deg,#2878c0,#5eccd8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.cm-stat-label { font-size: 7px; letter-spacing: 3px; text-transform: uppercase; color: var(--dust); }
+
+/* TABS */
+.cm-tabs {
+  display: flex; border-bottom: 1px solid var(--r2);
+  background: var(--blk); overflow-x: auto;
+}
+.cm-tab {
+  padding: 14px 28px; font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--dust); cursor: pointer; border-right: 1px solid var(--r1);
+  transition: all 0.2s; white-space: nowrap; border-bottom: 2px solid transparent;
+  user-select: none;
+}
+.cm-tab:hover { color: var(--off); }
+.cm-tab.active { color: var(--teal); border-bottom-color: var(--teal); }
+
+/* MAIN FORUM LAYOUT */
+.cm-main {
+  display: grid; grid-template-columns: 1fr 340px;
+}
+
+/* LEFT — ANNOTATED DISPATCH */
+.cm-dispatch {
+  border-right: 1px solid var(--r1);
+  border-bottom: 1px solid var(--r2);
+}
+.cm-dispatch-header {
+  padding: 24px 32px; border-bottom: 1px solid var(--r1);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.cm-dispatch-title { font-family: 'IM Fell English', serif; font-style: italic; font-size: 16px; color: var(--warm); }
+.cm-dispatch-meta { font-size: 7px; letter-spacing: 3px; text-transform: uppercase; color: rgba(240,236,224,0.2); }
+
+/* ANNOTATION LINES — Rap Genius style */
+.anno-block { position: relative; }
+.anno-line {
+  display: grid; grid-template-columns: 1fr auto;
+  padding: 0 32px; gap: 0;
+  transition: background 0.15s;
+}
+.anno-line:hover { background: rgba(240,236,224,0.015); }
+.anno-line.highlighted { background: var(--anno-bg); }
+.anno-line.highlighted .anno-text { border-left: 2px solid var(--teal); padding-left: 18px; }
+.anno-text {
+  font-family: 'IM Fell English', serif; font-size: 15px; line-height: 1.9;
+  color: rgba(240,236,224,0.7); padding: 14px 0; cursor: pointer;
+  transition: color 0.15s;
+}
+.anno-line.highlighted .anno-text { color: var(--off); }
+.anno-text .annotated {
+  background: linear-gradient(0deg, rgba(94,204,216,0.18) 0%, rgba(94,204,216,0.18) 100%);
+  border-bottom: 1px solid rgba(94,204,216,0.5);
+  cursor: pointer; transition: background 0.15s;
+  padding: 1px 2px;
+}
+.anno-text .annotated:hover { background: rgba(94,204,216,0.3); }
+.anno-count {
+  display: flex; align-items: center; padding: 14px 0 14px 16px;
+  font-size: 8px; letter-spacing: 2px; color: rgba(94,204,216,0.5);
+  cursor: pointer; white-space: nowrap; transition: color 0.15s;
+}
+.anno-count:hover { color: var(--teal); }
+.anno-count.has-notes { color: var(--teal); }
+.anno-count svg { width: 10px; height: 10px; fill: currentColor; margin-right: 4px; }
+
+.anno-spacer { height: 1px; background: var(--r1); margin: 0 32px; }
+
+/* ANNOTATION PANEL — pops inline Genius-style */
+.anno-panel {
+  display: none; margin: 0 32px 0 52px; padding: 20px;
+  background: var(--anno-bg); border: 1px solid var(--anno-border);
+  border-left: 3px solid var(--teal);
+}
+.anno-panel.open { display: block; }
+.anno-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.anno-panel-tag { font-size: 7px; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); }
+.anno-panel-close { font-size: 14px; color: var(--dust); cursor: pointer; background: none; border: none; }
+.anno-panel-close:hover { color: var(--off); }
+.anno-entry { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgba(240,236,224,0.06); }
+.anno-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.anno-entry-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.anno-handle { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); }
+.anno-badge { font-size: 7px; letter-spacing: 2px; text-transform: uppercase; color: rgba(94,204,216,0.5); padding: 2px 6px; border: 1px solid rgba(94,204,216,0.2); }
+.anno-ts { font-size: 7px; color: rgba(240,236,224,0.2); margin-left: auto; }
+.anno-entry-text { font-size: 11px; line-height: 1.9; color: rgba(240,236,224,0.6); }
+.anno-vote { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; }
+.anno-vote-btn { font-size: 9px; color: rgba(240,236,224,0.25); cursor: pointer; background: none; border: none; letter-spacing: 1px; transition: color 0.15s; }
+.anno-vote-btn:hover { color: var(--teal); }
+
+.anno-input-row { display: flex; gap: 8px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--r1); }
+.anno-input { flex: 1; background: transparent; border: none; border-bottom: 1px solid var(--r2); color: var(--off); font-family: 'Space Mono', monospace; font-size: 11px; padding: 8px 0; outline: none; }
+.anno-input::placeholder { color: rgba(240,236,224,0.2); }
+.anno-input:focus { border-bottom-color: var(--teal); }
+.anno-submit { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1px; color: var(--blk); background: var(--teal); border: none; padding: 8px 16px; cursor: pointer; transition: background 0.2s; }
+.anno-submit:hover { background: #7adde6; }
+
+/* RIGHT SIDEBAR — forum threads */
+.cm-sidebar { border-bottom: 1px solid var(--r2); }
+.cm-sidebar-header { padding: 20px 24px; border-bottom: 1px solid var(--r1); display: flex; align-items: center; justify-content: space-between; }
+.cm-sidebar-title { font-size: 8px; letter-spacing: 4px; text-transform: uppercase; color: var(--dust); }
+.cm-new-thread { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1px; color: var(--blk); background: var(--teal); border: none; padding: 6px 14px; cursor: pointer; transition: background 0.2s; }
+.cm-new-thread:hover { background: #7adde6; }
+
+.cm-thread {
+  padding: 18px 24px; border-bottom: 1px solid var(--r1);
+  cursor: pointer; transition: background 0.2s;
+}
+.cm-thread:last-child { border-bottom: none; }
+.cm-thread:hover { background: rgba(240,236,224,0.018); }
+.cm-thread-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.cm-thread-tag { font-size: 7px; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); }
+.cm-thread-count { font-size: 7px; color: rgba(240,236,224,0.25); white-space: nowrap; }
+.cm-thread-title { font-family: 'IM Fell English', serif; font-style: italic; font-size: 13px; color: var(--warm); line-height: 1.45; margin-bottom: 8px; }
+.cm-thread-meta { font-size: 8px; color: rgba(240,236,224,0.2); display: flex; gap: 12px; }
+.cm-thread-hot { color: var(--teal); }
+
+/* ACTIVE THREAD PANEL */
+.cm-thread-panel { display: none; padding: 20px 24px; border-bottom: 1px solid var(--r1); border-top: 1px solid var(--anno-border); background: rgba(8,8,8,0.6); }
+.cm-thread-panel.open { display: block; }
+.cm-reply { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(240,236,224,0.04); }
+.cm-reply:last-of-type { border-bottom: none; }
+.cm-reply-meta { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; }
+.cm-reply-handle { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); }
+.cm-reply-ts { font-size: 7px; color: rgba(240,236,224,0.2); }
+.cm-reply-text { font-size: 11px; line-height: 1.8; color: rgba(240,236,224,0.55); }
+.cm-thread-input-row { display: flex; gap: 8px; margin-top: 14px; }
+.cm-thread-input { flex: 1; background: transparent; border: none; border-bottom: 1px solid var(--r2); color: var(--off); font-family: 'Space Mono', monospace; font-size: 11px; padding: 8px 0; outline: none; }
+.cm-thread-input::placeholder { color: rgba(240,236,224,0.2); }
+.cm-thread-input:focus { border-bottom-color: var(--teal); }
+.cm-thread-reply-btn { font-family: 'Bebas Neue', sans-serif; font-size: 13px; color: var(--blk); background: var(--teal); border: none; padding: 8px 14px; cursor: pointer; }
+
+/* LEADERBOARD STRIP */
+.cm-board {
+  display: grid; grid-template-columns: repeat(5,1fr);
+  border-bottom: 1px solid var(--r2);
+}
+.cm-board-item {
+  padding: 24px 20px; border-right: 1px solid var(--r1);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.cm-board-item:last-child { border-right: none; }
+.cm-board-rank { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: rgba(240,236,224,0.05); line-height: 1; }
+.cm-board-handle { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); }
+.cm-board-pts { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--off); }
+.cm-board-label { font-size: 7px; letter-spacing: 2px; text-transform: uppercase; color: rgba(240,236,224,0.2); }
+
+/* FOOTER */
+.mc-footer { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; border-top: 1px solid var(--r2); background: var(--blk); }
+.mc-footer-copy { font-size: 7px; letter-spacing: 2px; text-transform: uppercase; color: rgba(240,236,224,0.1); }
+
+@media (max-width: 900px) {
+  .cm-hero { grid-template-columns: 1fr; }
+  .cm-main { grid-template-columns: 1fr; }
+  .cm-dispatch { border-right: none; }
+  .cm-board { grid-template-columns: 1fr 1fr 1fr; }
+  .mc-nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+<nav class="mc-nav">
+  <a href="/" class="logo">MAGDIEL <span class="cc">¢</span>ents</a>
+  <ul class="mc-nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/community" class="active">Community</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="cm-hero">
+  <div>
+    <div class="cm-kicker">/// Annotation Cable — Drop a note in the margins</div>
+    <h1 class="cm-h1">THE<br><em>MAR</em><br><em>GINS.</em></h1>
+    <p class="cm-sub">This is where the dispatches get decoded, disputed, expanded, and signed. Highlight a line. Drop your annotation. Start a thread. The ¢ is collaborative only when the signal is real.</p>
+  </div>
+  <div class="cm-stats">
+    <div class="cm-stat">
+      <div class="cm-stat-num">47</div>
+      <div class="cm-stat-label">Annotations filed</div>
+    </div>
+    <div class="cm-stat">
+      <div class="cm-stat-num">12</div>
+      <div class="cm-stat-label">Active threads</div>
+    </div>
+    <div class="cm-stat">
+      <div class="cm-stat-num">¢</div>
+      <div class="cm-stat-label">Open frequency</div>
+    </div>
+  </div>
+</div>
+
+<div class="mc-ticker" aria-hidden="true">
+  <span class="mc-ticker-track">
+    ANNOTATE <span class="tc">¢</span> DECODE <span class="tc">¢</span> DISPUTE <span class="tc">¢</span> EXPAND <span class="tc">¢</span> DROP A NOTE <span class="tc">¢</span> THE MARGINS ARE OPEN <span class="tc">¢</span> SIGN THE ¢ <span class="tc">¢</span> COMMUNITY CABLE <span class="tc">¢</span> &nbsp;&nbsp;
+    ANNOTATE <span class="tc">¢</span> DECODE <span class="tc">¢</span> DISPUTE <span class="tc">¢</span> EXPAND <span class="tc">¢</span> DROP A NOTE <span class="tc">¢</span> THE MARGINS ARE OPEN <span class="tc">¢</span> SIGN THE ¢ <span class="tc">¢</span> COMMUNITY CABLE <span class="tc">¢</span> &nbsp;&nbsp;
+  </span>
+</div>
+
+<!-- TABS -->
+<div class="cm-tabs">
+  <div class="cm-tab active" onclick="switchTab(this,'annotations')">/// Annotations</div>
+  <div class="cm-tab" onclick="switchTab(this,'threads')">/// Forum Threads</div>
+  <div class="cm-tab" onclick="switchTab(this,'leaderboard')">/// Leaderboard</div>
+</div>
+
+<!-- ANNOTATIONS TAB -->
+<div id="tab-annotations">
+  <div class="mc-sh">/// (¢/S)ents/Ense — Annotated Dispatch</div>
+  <div class="cm-main">
+    <!-- ANNOTATED TEXT -->
+    <div class="cm-dispatch">
+      <div class="cm-dispatch-header">
+        <span class="cm-dispatch-title">Dispatch 01 — (¢/S)ents/Ense</span>
+        <span class="cm-dispatch-meta">47 annotations · Vol. I</span>
+      </div>
+
+      <!-- Line 1 -->
+      <div class="anno-block">
+        <div class="anno-line" onclick="toggleAnno('a1')">
+          <div class="anno-text">The <span class="annotated">¢ came before the name</span>. Not a logo, not a brand decision — a sentence.</div>
+          <div class="anno-count has-notes" title="3 annotations">
+            <svg viewBox="0 0 10 10"><path d="M1 1h8v6H5l-3 2V7H1z"/></svg>3
+          </div>
+        </div>
+        <div class="anno-panel" id="a1">
+          <div class="anno-panel-header">
+            <span class="anno-panel-tag">/// 3 Annotations — "¢ came before the name"</span>
+            <button class="anno-panel-close" onclick="toggleAnno('a1')">✕</button>
+          </div>
+          <div class="anno-entry">
+            <div class="anno-entry-meta">
+              <span class="anno-handle">Dispatch_Rdr</span>
+              <span class="anno-badge">Scholar</span>
+              <span class="anno-ts">2d ago</span>
+            </div>
+            <p class="anno-entry-text">The cent sign as primordial — preceding identity rather than decorating it. Compare to how Kanye's 'Ye' logo functions: not a shortened name but a new grammatical unit. The ¢ colonizes the name from the front.</p>
+            <div class="anno-vote">
+              <button class="anno-vote-btn" onclick="vote(this)">↑ 12</button>
+              <button class="anno-vote-btn">↓</button>
+            </div>
+          </div>
+          <div class="anno-entry">
+            <div class="anno-entry-meta">
+              <span class="anno-handle">FictingMethod</span>
+              <span class="anno-badge">Annotator</span>
+              <span class="anno-ts">1d ago</span>
+            </div>
+            <p class="anno-entry-text">Also reads as the cent sign as a speech act — a declaration before the speaker is even introduced. "I cost something" before you even know who's talking.</p>
+            <div class="anno-vote">
+              <button class="anno-vote-btn" onclick="vote(this)">↑ 8</button>
+              <button class="anno-vote-btn">↓</button>
+            </div>
+          </div>
+          <div class="anno-input-row">
+            <input class="anno-input" placeholder="Add your annotation..." onkeydown="submitAnno(event, 'a1')">
+            <button class="anno-submit" onclick="addAnno('a1')">POST ¢</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="anno-spacer"></div>
+
+      <!-- Line 2 -->
+      <div class="anno-block">
+        <div class="anno-line" onclick="toggleAnno('a2')">
+          <div class="anno-text">You put the cent sign in front of your name and you're saying: <span class="annotated">I cost something. I mean something.</span></div>
+          <div class="anno-count has-notes" title="5 annotations">
+            <svg viewBox="0 0 10 10"><path d="M1 1h8v6H5l-3 2V7H1z"/></svg>5
+          </div>
+        </div>
+        <div class="anno-panel" id="a2">
+          <div class="anno-panel-header">
+            <span class="anno-panel-tag">/// 5 Annotations — "I cost something. I mean something."</span>
+            <button class="anno-panel-close" onclick="toggleAnno('a2')">✕</button>
+          </div>
+          <div class="anno-entry">
+            <div class="anno-entry-meta">
+              <span class="anno-handle">LakesideFreq</span>
+              <span class="anno-badge">Contributor</span>
+              <span class="anno-ts">3d ago</span>
+            </div>
+            <p class="anno-entry-text">The double meaning in "mean" — to signify AND to matter. The ¢ collapses semantic meaning and economic value into one gesture. This is why it can't just be a dollar sign: the dollar is too obvious, too settled. The cent is still earning.</p>
+            <div class="anno-vote">
+              <button class="anno-vote-btn" onclick="vote(this)">↑ 19</button>
+              <button class="anno-vote-btn">↓</button>
+            </div>
+          </div>
+          <div class="anno-input-row">
+            <input class="anno-input" placeholder="Add your annotation..." onkeydown="submitAnno(event, 'a2')">
+            <button class="anno-submit" onclick="addAnno('a2')">POST ¢</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="anno-spacer"></div>
+
+      <!-- Line 3 -->
+      <div class="anno-block">
+        <div class="anno-line highlighted" onclick="toggleAnno('a3')">
+          <div class="anno-text">The <span class="annotated">(¢/S) construction</span> is the whole argument in parentheses.</div>
+          <div class="anno-count has-notes">
+            <svg viewBox="0 0 10 10"><path d="M1 1h8v6H5l-3 2V7H1z"/></svg>9
+          </div>
+        </div>
+        <div class="anno-panel open" id="a3">
+          <div class="anno-panel-header">
+            <span class="anno-panel-tag">/// 9 Annotations — "(¢/S) construction"</span>
+            <button class="anno-panel-close" onclick="toggleAnno('a3')">✕</button>
+          </div>
+          <div class="anno-entry">
+            <div class="anno-entry-meta">
+              <span class="anno-handle">MarginWriter</span>
+              <span class="anno-badge">Scholar</span>
+              <span class="anno-ts">5d ago</span>
+            </div>
+            <p class="anno-entry-text">The slash as a superposition operator — both states exist simultaneously until you read it. Schrödinger's word. Cents and Sense are both present, neither collapsed until the ear decides. This is the trap grammar: ambiguity held in productive tension.</p>
+            <div class="anno-vote">
+              <button class="anno-vote-btn" onclick="vote(this)">↑ 24</button>
+              <button class="anno-vote-btn">↓</button>
+            </div>
+          </div>
+          <div class="anno-entry">
+            <div class="anno-entry-meta">
+              <span class="anno-handle">SoulPatine</span>
+              <span class="anno-badge">Annotator</span>
+              <span class="anno-ts">4d ago</span>
+            </div>
+            <p class="anno-entry-text">The parentheses are also doing work — this is a subordinate clause, a digression, an aside. The biggest argument gets put in the smallest grammatical container. That's a Trap move.</p>
+            <div class="anno-vote">
+              <button class="anno-vote-btn" onclick="vote(this)">↑ 17</button>
+              <button class="anno-vote-btn">↓</button>
+            </div>
+          </div>
+          <div class="anno-input-row">
+            <input class="anno-input" placeholder="Add your annotation..." onkeydown="submitAnno(event, 'a3')">
+            <button class="anno-submit" onclick="addAnno('a3')">POST ¢</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="anno-spacer"></div>
+
+      <!-- Line 4 -->
+      <div class="anno-block">
+        <div class="anno-line" onclick="toggleAnno('a4')">
+          <div class="anno-text">Cents. Sense. The <span class="annotated">coin and the cognition</span>. The monetary and the meaningful.</div>
+          <div class="anno-count has-notes">
+            <svg viewBox="0 0 10 10"><path d="M1 1h8v6H5l-3 2V7H1z"/></svg>6
+          </div>
+        </div>
+        <div class="anno-panel" id="a4">
+          <div class="anno-panel-header">
+            <span class="anno-panel-tag">/// 6 Annotations — "coin and the cognition"</span>
+            <button class="anno-panel-close" onclick="toggleAnno('a4')">✕</button>
+          </div>
+          <div class="anno-entry">
+            <div class="anno-entry-meta">
+              <span class="anno-handle">TrapGrammar</span>
+              <span class="anno-badge">Contributor</span>
+              <span class="anno-ts">2d ago</span>
+            </div>
+            <p class="anno-entry-text">The alliteration (coin/cognition) binds what's being argued — that these aren't separate categories. The sonic link is also the semantic link. This is the writing proving itself in its own grammar.</p>
+            <div class="anno-vote">
+              <button class="anno-vote-btn" onclick="vote(this)">↑ 14</button>
+              <button class="anno-vote-btn">↓</button>
+            </div>
+          </div>
+          <div class="anno-input-row">
+            <input class="anno-input" placeholder="Add your annotation...">
+            <button class="anno-submit" onclick="addAnno('a4')">POST ¢</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="anno-spacer"></div>
+
+      <!-- Line 5 — no annotations yet -->
+      <div class="anno-block">
+        <div class="anno-line" onclick="toggleAnno('a5')">
+          <div class="anno-text">The trap is a grammar because <span class="annotated">it governs. It has rules.</span></div>
+          <div class="anno-count">
+            <svg viewBox="0 0 10 10"><path d="M1 1h8v6H5l-3 2V7H1z"/></svg>+
+          </div>
+        </div>
+        <div class="anno-panel" id="a5">
+          <div class="anno-panel-header">
+            <span class="anno-panel-tag">/// Be the first to annotate this line</span>
+            <button class="anno-panel-close" onclick="toggleAnno('a5')">✕</button>
+          </div>
+          <div class="anno-input-row">
+            <input class="anno-input" placeholder="Drop your annotation here..." onkeydown="submitAnno(event, 'a5')">
+            <button class="anno-submit" onclick="addAnno('a5')">POST ¢</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="anno-spacer"></div>
+
+      <div class="anno-block">
+        <div class="anno-line" onclick="toggleAnno('a6')">
+          <div class="anno-text">Subject: <span class="annotated">the block. Predicate: what the block does to you.</span> Object: what you make of what the block does to you.</div>
+          <div class="anno-count has-notes">
+            <svg viewBox="0 0 10 10"><path d="M1 1h8v6H5l-3 2V7H1z"/></svg>4
+          </div>
+        </div>
+        <div class="anno-panel" id="a6">
+          <div class="anno-panel-header">
+            <span class="anno-panel-tag">/// 4 Annotations — "the block. Predicate..."</span>
+            <button class="anno-panel-close" onclick="toggleAnno('a6')">✕</button>
+          </div>
+          <div class="anno-entry">
+            <div class="anno-entry-meta">
+              <span class="anno-handle">ChosenMan_47</span>
+              <span class="anno-badge">Scholar</span>
+              <span class="anno-ts">6d ago</span>
+            </div>
+            <p class="anno-entry-text">This is a complete grammatical sentence ABOUT sentence structure. The meta-move is also the content: the block is both the subject of the sentence and the subject of the life. Form and content are the same thing here.</p>
+            <div class="anno-vote">
+              <button class="anno-vote-btn" onclick="vote(this)">↑ 21</button>
+              <button class="anno-vote-btn">↓</button>
+            </div>
+          </div>
+          <div class="anno-input-row">
+            <input class="anno-input" placeholder="Add your annotation...">
+            <button class="anno-submit" onclick="addAnno('a6')">POST ¢</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR — THREADS -->
+    <div class="cm-sidebar">
+      <div class="cm-sidebar-header">
+        <span class="cm-sidebar-title">/// Active Threads</span>
+        <button class="cm-new-thread" onclick="openNewThread()">+ NEW THREAD</button>
+      </div>
+
+      <div class="cm-thread" onclick="toggleThread('t1')">
+        <div class="cm-thread-top">
+          <span class="cm-thread-tag cm-thread-hot">/// 🔥 Hot</span>
+          <span class="cm-thread-count">14 replies</span>
+        </div>
+        <div class="cm-thread-title">Is "Ficting" a verb or a noun? The method as both action and product</div>
+        <div class="cm-thread-meta">
+          <span>Dispatch_Rdr</span>
+          <span>2 hours ago</span>
+        </div>
+      </div>
+      <div class="cm-thread-panel" id="t1">
+        <div class="cm-reply">
+          <div class="cm-reply-meta"><span class="cm-reply-handle">MarginWriter</span><span class="cm-reply-ts">2h ago</span></div>
+          <p class="cm-reply-text">It's a gerund doing triple duty — simultaneously the act, the product, and the methodology. "Ficting Method" only works because both words are already destabilized.</p>
+        </div>
+        <div class="cm-reply">
+          <div class="cm-reply-meta"><span class="cm-reply-handle">LakesideFreq</span><span class="cm-reply-ts">1h ago</span></div>
+          <p class="cm-reply-text">Also note it's not "fiction" — the "-ing" makes it active, ongoing, never finished. The method is always in progress.</p>
+        </div>
+        <div class="cm-thread-input-row">
+          <input class="cm-thread-input" placeholder="Add to thread..." onkeydown="addReply(event,'t1')">
+          <button class="cm-thread-reply-btn" onclick="addReplyBtn('t1')">REPLY ¢</button>
+        </div>
+      </div>
+
+      <div class="cm-thread" onclick="toggleThread('t2')">
+        <div class="cm-thread-top">
+          <span class="cm-thread-tag">/// Analysis</span>
+          <span class="cm-thread-count">8 replies</span>
+        </div>
+        <div class="cm-thread-title">Michigan Lakeside / Driftwood from Habana — actual locations or coordinates of a syntax?</div>
+        <div class="cm-thread-meta">
+          <span>SoulPatine</span>
+          <span>1 day ago</span>
+        </div>
+      </div>
+      <div class="cm-thread-panel" id="t2">
+        <div class="cm-reply">
+          <div class="cm-reply-meta"><span class="cm-reply-handle">TrapGrammar</span><span class="cm-reply-ts">22h ago</span></div>
+          <p class="cm-reply-text">Both. The dispatch says so explicitly — "these are not destinations, these are coordinates of a syntax." The geographic is always also the grammatical here.</p>
+        </div>
+        <div class="cm-thread-input-row">
+          <input class="cm-thread-input" placeholder="Add to thread..." onkeydown="addReply(event,'t2')">
+          <button class="cm-thread-reply-btn" onclick="addReplyBtn('t2')">REPLY ¢</button>
+        </div>
+      </div>
+
+      <div class="cm-thread" onclick="toggleThread('t3')">
+        <div class="cm-thread-top">
+          <span class="cm-thread-tag">/// Comparison</span>
+          <span class="cm-thread-count">5 replies</span>
+        </div>
+        <div class="cm-thread-title">Comparing ¢ to other literary cent signs — Patti Smith, Amiri Baraka, Jay-Z's economic imagery</div>
+        <div class="cm-thread-meta">
+          <span>ChosenMan_47</span>
+          <span>2 days ago</span>
+        </div>
+      </div>
+      <div class="cm-thread-panel" id="t3">
+        <div class="cm-reply">
+          <div class="cm-reply-meta"><span class="cm-reply-handle">FictingMethod</span><span class="cm-reply-ts">1d ago</span></div>
+          <p class="cm-reply-text">The key difference from Jay-Z's economic imagery is that ¢ undervalues on purpose. It's not a dollar, it's a cent. The claim is modest and therefore more radical.</p>
+        </div>
+        <div class="cm-thread-input-row">
+          <input class="cm-thread-input" placeholder="Add to thread..." onkeydown="addReply(event,'t3')">
+          <button class="cm-thread-reply-btn" onclick="addReplyBtn('t3')">REPLY ¢</button>
+        </div>
+      </div>
+
+      <div class="cm-thread" onclick="toggleThread('t4')">
+        <div class="cm-thread-top">
+          <span class="cm-thread-tag">/// New</span>
+          <span class="cm-thread-count">2 replies</span>
+        </div>
+        <div class="cm-thread-title">The inventory (Trap, Po'try, Marble, etc.) as a complete ontology — nothing missing, nothing extra</div>
+        <div class="cm-thread-meta">
+          <span>Dispatch_Rdr</span>
+          <span>3 hours ago</span>
+        </div>
+      </div>
+      <div class="cm-thread-panel" id="t4">
+        <div class="cm-reply">
+          <div class="cm-reply-meta"><span class="cm-reply-handle">MarginWriter</span><span class="cm-reply-ts">2h ago</span></div>
+          <p class="cm-reply-text">The items don't form categories — they form a single flat list. Suicidal tendencies and Lover Boy at the same level. That's the claim: this is the complete inventory, hierarchy not included.</p>
+        </div>
+        <div class="cm-thread-input-row">
+          <input class="cm-thread-input" placeholder="Add to thread..." onkeydown="addReply(event,'t4')">
+          <button class="cm-thread-reply-btn" onclick="addReplyBtn('t4')">REPLY ¢</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LEADERBOARD TAB -->
+<div id="tab-leaderboard" style="display:none">
+  <div class="mc-sh">/// Top Annotators — Dispatch Leaderboard</div>
+  <div class="cm-board">
+    <div class="cm-board-item">
+      <div class="cm-board-rank">01</div>
+      <div class="cm-board-handle">MarginWriter</div>
+      <div class="cm-board-pts">247</div>
+      <div class="cm-board-label">¢ Points</div>
+    </div>
+    <div class="cm-board-item">
+      <div class="cm-board-rank">02</div>
+      <div class="cm-board-handle">ChosenMan_47</div>
+      <div class="cm-board-pts">198</div>
+      <div class="cm-board-label">¢ Points</div>
+    </div>
+    <div class="cm-board-item">
+      <div class="cm-board-rank">03</div>
+      <div class="cm-board-handle">LakesideFreq</div>
+      <div class="cm-board-pts">156</div>
+      <div class="cm-board-label">¢ Points</div>
+    </div>
+    <div class="cm-board-item">
+      <div class="cm-board-rank">04</div>
+      <div class="cm-board-handle">TrapGrammar</div>
+      <div class="cm-board-pts">134</div>
+      <div class="cm-board-label">¢ Points</div>
+    </div>
+    <div class="cm-board-item">
+      <div class="cm-board-rank">05</div>
+      <div class="cm-board-handle">SoulPatine</div>
+      <div class="cm-board-pts">112</div>
+      <div class="cm-board-label">¢ Points</div>
+    </div>
+  </div>
+</div>
+
+<!-- THREADS TAB -->
+<div id="tab-threads" style="display:none">
+  <div class="mc-sh">/// All Forum Threads</div>
+  <div style="padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-bottom: 1px solid rgba(240,236,224,0.15);">
+    <div style="border-right: 1px solid rgba(240,236,224,0.07); padding-right: 32px;">
+      <div style="font-size:7px;letter-spacing:5px;text-transform:uppercase;color:#7a6a58;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(240,236,224,0.07)">/// Dispatch Analysis</div>
+      <div class="cm-thread" onclick="toggleThread('t1')" style="border:none;padding:0 0 16px;margin-bottom:16px;border-bottom:1px solid rgba(240,236,224,0.07)">
+        <div class="cm-thread-top"><span class="cm-thread-tag cm-thread-hot">🔥 Hot</span><span class="cm-thread-count">14 replies</span></div>
+        <div class="cm-thread-title">Is "Ficting" a verb or a noun? The method as both action and product</div>
+        <div class="cm-thread-meta"><span>Dispatch_Rdr</span><span>2 hours ago</span></div>
+      </div>
+      <div class="cm-thread" onclick="toggleThread('t2')" style="border:none;padding:0 0 16px;margin-bottom:0;border-bottom:none">
+        <div class="cm-thread-top"><span class="cm-thread-tag">Analysis</span><span class="cm-thread-count">8 replies</span></div>
+        <div class="cm-thread-title">Michigan Lakeside / Driftwood from Habana — actual locations or coordinates of a syntax?</div>
+        <div class="cm-thread-meta"><span>SoulPatine</span><span>1 day ago</span></div>
+      </div>
+    </div>
+    <div style="padding-left: 32px;">
+      <div style="font-size:7px;letter-spacing:5px;text-transform:uppercase;color:#7a6a58;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(240,236,224,0.07)">/// Comparative & Context</div>
+      <div class="cm-thread" onclick="toggleThread('t3')" style="border:none;padding:0 0 16px;margin-bottom:16px;border-bottom:1px solid rgba(240,236,224,0.07)">
+        <div class="cm-thread-top"><span class="cm-thread-tag">Comparison</span><span class="cm-thread-count">5 replies</span></div>
+        <div class="cm-thread-title">Comparing ¢ to other literary cent signs — Patti Smith, Amiri Baraka, Jay-Z's economic imagery</div>
+        <div class="cm-thread-meta"><span>ChosenMan_47</span><span>2 days ago</span></div>
+      </div>
+      <div class="cm-thread" onclick="toggleThread('t4')" style="border:none;padding:0 0 16px;margin-bottom:0;border-bottom:none">
+        <div class="cm-thread-top"><span class="cm-thread-tag">New</span><span class="cm-thread-count">2 replies</span></div>
+        <div class="cm-thread-title">The inventory as a complete ontology — nothing missing, nothing extra</div>
+        <div class="cm-thread-meta"><span>Dispatch_Rdr</span><span>3 hours ago</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="mc-footer">
+  <a href="/" class="logo">MAGDIEL <span class="cc">¢</span>ents</a>
+  <div class="mc-footer-copy">MAGDIEL ¢ents 1997 — All Dispatches Reserved</div>
+</footer>
+
+<script>
+function toggleAnno(id) {
+  const panel = document.getElementById(id);
+  const isOpen = panel.classList.contains('open');
+  document.querySelectorAll('.anno-panel.open').forEach(p => { if(p.id !== id) p.classList.remove('open'); });
+  document.querySelectorAll('.anno-line.highlighted').forEach(l => { if(l !== panel.previousElementSibling) l.classList.remove('highlighted'); });
+  panel.classList.toggle('open', !isOpen);
+  const line = panel.closest('.anno-block').querySelector('.anno-line');
+  line.classList.toggle('highlighted', !isOpen);
+}
+function toggleThread(id) {
+  const panel = document.getElementById(id);
+  document.querySelectorAll('.cm-thread-panel.open').forEach(p => { if(p.id !== id) p.classList.remove('open'); });
+  panel.classList.toggle('open');
+}
+function switchTab(el, tab) {
+  document.querySelectorAll('.cm-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-annotations').style.display = tab === 'annotations' ? '' : 'none';
+  document.getElementById('tab-threads').style.display = tab === 'threads' ? '' : 'none';
+  document.getElementById('tab-leaderboard').style.display = tab === 'leaderboard' ? '' : 'none';
+}
+function vote(btn) {
+  const parts = btn.textContent.split(' ');
+  const num = parseInt(parts[1]) + 1;
+  btn.textContent = `↑ ${num}`;
+  btn.style.color = '#5eccd8';
+}
+function addAnno(panelId) {
+  const panel = document.getElementById(panelId);
+  const input = panel.querySelector('.anno-input');
+  const text = input.value.trim();
+  if (!text) return;
+  const entry = document.createElement('div');
+  entry.className = 'anno-entry';
+  entry.innerHTML = `<div class="anno-entry-meta"><span class="anno-handle">You</span><span class="anno-badge">Visitor</span><span class="anno-ts">just now</span></div><p class="anno-entry-text">${text}</p><div class="anno-vote"><button class="anno-vote-btn" onclick="vote(this)">↑ 1</button><button class="anno-vote-btn">↓</button></div>`;
+  panel.querySelector('.anno-input-row').before(entry);
+  input.value = '';
+  // update count
+  const countEl = panel.closest('.anno-block').querySelector('.anno-count');
+  const n = parseInt(countEl.textContent) || 0;
+  countEl.innerHTML = `<svg viewBox="0 0 10 10"><path d="M1 1h8v6H5l-3 2V7H1z"/></svg>${n+1}`;
+  countEl.classList.add('has-notes');
+}
+function submitAnno(e, id) { if(e.key === 'Enter') addAnno(id); }
+function addReplyBtn(tid) {
+  const panel = document.getElementById(tid);
+  const input = panel.querySelector('.cm-thread-input');
+  const text = input.value.trim();
+  if(!text) return;
+  const reply = document.createElement('div');
+  reply.className = 'cm-reply';
+  reply.innerHTML = `<div class="cm-reply-meta"><span class="cm-reply-handle">You</span><span class="cm-reply-ts">just now</span></div><p class="cm-reply-text">${text}</p>`;
+  panel.querySelector('.cm-thread-input-row').before(reply);
+  input.value = '';
+}
+function addReply(e, tid) { if(e.key === 'Enter') addReplyBtn(tid); }
+function openNewThread() { alert('New thread creation — wire to your backend!'); }
+</script>
+</body>
+</html>

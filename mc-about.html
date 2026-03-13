@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MAGDIEL ¢ents — About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Caveat:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=IM+Fell+English:ital@1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blk: #080808; --off: #f0ece0; --warm: #c8b89a; --dust: #7a6a58; --teal: #5eccd8;
+  --r1: rgba(240,236,224,0.07); --r2: rgba(240,236,224,0.15);
+}
+html, body { background: var(--blk); color: var(--off); font-family: 'Space Mono', monospace; overflow-x: hidden; }
+.logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: var(--off); text-decoration: none; white-space: nowrap; }
+.logo .cc { background: linear-gradient(170deg,#1a4a9a,#5eccd8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.mc-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 52px; border-bottom: 1px solid var(--r2); background: rgba(8,8,8,0.96); backdrop-filter: blur(12px); }
+.mc-nav-links { display: flex; gap: 28px; list-style: none; }
+.mc-nav-links a { font-size: 8px; letter-spacing: 3px; text-transform: uppercase; color: var(--dust); text-decoration: none; transition: color 0.2s; }
+.mc-nav-links a:hover, .mc-nav-links a.active { color: var(--teal); }
+
+/* ABOUT HERO — full viewport split */
+.ab-hero {
+  margin-top: 52px;
+  min-height: calc(100vh - 52px);
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--r2);
+}
+.ab-hero-l {
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: clamp(52px,7vw,100px);
+  border-right: 1px solid var(--r2);
+}
+.ab-kicker { font-size: 8px; letter-spacing: 5px; text-transform: uppercase; color: var(--teal); margin-bottom: 32px; }
+.ab-h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px,11vw,140px);
+  line-height: 0.88; color: var(--off); letter-spacing: -2px;
+  margin-bottom: 40px;
+}
+.ab-h1 .teal-line {
+  display: block;
+  background: linear-gradient(90deg,#1a4a9a,#5eccd8);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.ab-intro {
+  font-size: 13px; line-height: 2.1;
+  color: rgba(240,236,224,0.55); max-width: 520px;
+  margin-bottom: 52px;
+}
+.ab-sig-row { display: flex; align-items: flex-end; justify-content: space-between; }
+.ab-sig { font-family: 'Caveat', cursive; font-size: clamp(32px,4vw,50px); color: var(--teal); opacity: 0.45; }
+.ab-year { font-size: 8px; letter-spacing: 4px; text-transform: uppercase; color: rgba(240,236,224,0.14); }
+
+.ab-hero-r {
+  position: relative; overflow: hidden; background: var(--blk);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: clamp(36px,5vw,64px);
+}
+.ab-hero-bg {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(220px,32vw,400px); line-height: 1;
+  background: linear-gradient(160deg,#091428,#122244);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; pointer-events: none; opacity: 0.7;
+}
+.ab-hero-r::before {
+  content: ''; position: absolute; inset: 0; z-index: 1;
+  background: repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.09) 3px,rgba(0,0,0,0.09) 4px);
+  pointer-events: none;
+}
+.ab-hero-quote {
+  position: relative; z-index: 2;
+  border-left: 2px solid var(--teal); padding-left: 20px;
+}
+.ab-hero-quote p {
+  font-family: 'IM Fell English', serif; font-style: italic;
+  font-size: clamp(14px,1.6vw,18px); line-height: 1.7;
+  color: rgba(240,236,224,0.4);
+}
+.ab-hero-quote cite {
+  display: block; margin-top: 12px;
+  font-family: 'Space Mono', monospace; font-style: normal;
+  font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--teal); opacity: 0.6;
+}
+
+/* TICKER */
+.mc-ticker { overflow: hidden; white-space: nowrap; background: var(--blk); border-bottom: 1px solid var(--r2); padding: 10px 0; }
+.mc-ticker-track { display: inline-block; font-size: 8px; letter-spacing: 4px; text-transform: uppercase; color: rgba(240,236,224,0.15); animation: mc-tick 28s linear infinite; }
+.mc-ticker-track .tc { color: var(--teal); }
+@keyframes mc-tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* SECTION HEADER */
+.mc-sh { font-size: 7px; letter-spacing: 5px; text-transform: uppercase; color: var(--dust); padding: 13px 32px; border-bottom: 1px solid var(--r1); background: var(--blk); display: flex; align-items: center; gap: 14px; }
+.mc-sh::after { content: ''; flex: 1; height: 1px; background: var(--r1); }
+
+/* ORIGIN + METHOD — 2 cols */
+.ab-body {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--r2);
+}
+.ab-col { padding: clamp(44px,6vw,76px); }
+.ab-col:first-child { border-right: 1px solid var(--r1); }
+.ab-col-label { font-size: 7px; letter-spacing: 5px; text-transform: uppercase; color: var(--teal); margin-bottom: 28px; padding-bottom: 12px; border-bottom: 1px solid var(--r1); }
+.ab-col p { font-size: 13px; line-height: 2.15; color: rgba(240,236,224,0.62); margin-bottom: 20px; }
+.ab-col p:last-child { margin-bottom: 0; }
+
+/* INVENTORY — 4 col grid */
+.ab-inv { border-bottom: 1px solid var(--r2); }
+.ab-inv-grid { display: grid; grid-template-columns: repeat(4,1fr); }
+.ab-inv-item { padding: 28px 24px; border-right: 1px solid var(--r1); border-bottom: 1px solid var(--r1); transition: background 0.2s; cursor: default; }
+.ab-inv-item:nth-child(4n) { border-right: none; }
+.ab-inv-item:nth-last-child(-n+4) { border-bottom: none; }
+.ab-inv-item:hover { background: rgba(94,204,216,0.03); }
+.ab-inv-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; color: rgba(240,236,224,0.04); margin-bottom: 8px; }
+.ab-inv-tag { font-size: 7px; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+.ab-inv-val { font-family: 'UnifrakturMaguntia', cursive; font-size: 15px; color: var(--warm); }
+
+/* MANIFESTO STRIP */
+.ab-manifesto {
+  padding: clamp(52px,7vw,92px) clamp(32px,5vw,72px);
+  border-bottom: 1px solid var(--r2);
+  display: grid; grid-template-columns: 160px 1fr; gap: 56px; align-items: start;
+}
+.ab-mani-label { font-size: 7px; letter-spacing: 5px; text-transform: uppercase; color: var(--dust); padding-top: 10px; }
+.ab-mani-text { font-family: 'Bebas Neue', sans-serif; font-size: clamp(26px,4vw,50px); line-height: 1.08; color: rgba(240,236,224,0.12); letter-spacing: 0.5px; }
+.ab-mani-text em { font-style: normal; color: rgba(240,236,224,0.72); }
+
+/* FOOTER */
+.mc-footer { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; border-top: 1px solid var(--r2); background: var(--blk); }
+.mc-footer-copy { font-size: 7px; letter-spacing: 2px; text-transform: uppercase; color: rgba(240,236,224,0.1); }
+
+@media (max-width: 768px) {
+  .ab-hero,.ab-body { grid-template-columns: 1fr; }
+  .ab-hero-l { border-right: none; border-bottom: 1px solid var(--r2); min-height: auto; }
+  .ab-col:first-child { border-right: none; border-bottom: 1px solid var(--r1); }
+  .ab-inv-grid { grid-template-columns: 1fr 1fr; }
+  .ab-inv-item:nth-child(2n) { border-right: none; }
+  .ab-inv-item:nth-child(4n) { border-right: none; }
+  .ab-manifesto { grid-template-columns: 1fr; gap: 16px; }
+  .mc-nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+<nav class="mc-nav">
+  <a href="/" class="logo">MAGDIEL <span class="cc">¢</span>ents</a>
+  <ul class="mc-nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/about" class="active">About</a></li>
+    <li><a href="/community">Community</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="ab-hero">
+  <div class="ab-hero-l">
+    <div>
+      <div class="ab-kicker">/// The signal behind the ¢</div>
+      <h1 class="ab-h1">MAG<br>DIEL<br><span class="teal-line">¢ents</span></h1>
+      <p class="ab-intro">A writing practice, a signal, and a sentence. Born from a set of coordinates — Michigan lakeside, driftwood from Habana — the work maps the space between origin and drift. Between the currency and the meaning. Between the trap and the grammar it generates.</p>
+    </div>
+    <div class="ab-sig-row">
+      <div class="ab-sig">MAGDIEL ¢ents</div>
+      <div class="ab-year">Est. 1997</div>
+    </div>
+  </div>
+  <div class="ab-hero-r">
+    <span class="ab-hero-bg">¢</span>
+    <div class="ab-hero-quote">
+      <p>The ¢ is not decoration. It's the argument in one character. Everything costs something. The question is whether the cost makes (¢/S)ents/Ense.</p>
+      <cite>— MAGDIEL ¢ents, Vol. I</cite>
+    </div>
+  </div>
+</div>
+
+<div class="mc-ticker" aria-hidden="true">
+  <span class="mc-ticker-track">
+    ORIGIN <span class="tc">¢</span> METHOD <span class="tc">¢</span> FICTING <span class="tc">¢</span> ORDINANCE <span class="tc">¢</span> MICHIGAN LAKESIDE <span class="tc">¢</span> DRIFTWOOD FROM HABANA <span class="tc">¢</span> TRAP IS A GRAMMAR <span class="tc">¢</span> THE ¢ IS A SENTENCE <span class="tc">¢</span> &nbsp;&nbsp;
+    ORIGIN <span class="tc">¢</span> METHOD <span class="tc">¢</span> FICTING <span class="tc">¢</span> ORDINANCE <span class="tc">¢</span> MICHIGAN LAKESIDE <span class="tc">¢</span> DRIFTWOOD FROM HABANA <span class="tc">¢</span> TRAP IS A GRAMMAR <span class="tc">¢</span> THE ¢ IS A SENTENCE <span class="tc">¢</span> &nbsp;&nbsp;
+  </span>
+</div>
+
+<div class="mc-sh">/// Origin & Method</div>
+<div class="ab-body">
+  <div class="ab-col">
+    <div class="ab-col-label">/// Origin</div>
+    <p>MAGDIEL ¢ents is a writing practice, a signal, and a sentence. It begins with a cent sign placed before a name — not as branding, but as a declaration of worth. The ¢ before MAGDIEL means: this name has been assigned a value.</p>
+    <p>Born out of Michigan lakeside and driftwood from Habana, the work maps the space between origin and drift. Between the lake and the island. Between the currency and the meaning. Between the trap and the grammar it generates.</p>
+    <p>The dispatches are long-form. The method is fictional. The ordinances are real.</p>
+  </div>
+  <div class="ab-col">
+    <div class="ab-col-label">/// Method</div>
+    <p>Ficting: the act of making things fictional that are also true. The city as sentence. The block as subject. The siren as punctuation. The trap not as genre but as the governing rule system of a specific grammar — one that compounds, accrues, and eventually settles.</p>
+    <p>Marble: the material and the game. Soul Sopa Patine: the patinated soul-soup, changed by contact with the world. Suicidal tendencies and Chosen Man in the same inventory — not contradictions, but the complete list.</p>
+    <p>The writing does not summarize. It dispatches. It files the ordinance. It signs the ¢.</p>
+  </div>
+</div>
+
+<div class="mc-sh">/// Full Inventory</div>
+<div class="ab-inv">
+  <div class="ab-inv-grid">
+    <div class="ab-inv-item"><div class="ab-inv-num">01</div><div class="ab-inv-tag">/// Tag</div><div class="ab-inv-val">Trap</div></div>
+    <div class="ab-inv-item"><div class="ab-inv-num">02</div><div class="ab-inv-tag">/// Tag</div><div class="ab-inv-val">Po'try</div></div>
+    <div class="ab-inv-item"><div class="ab-inv-num">03</div><div class="ab-inv-tag">/// Tag</div><div class="ab-inv-val">Fictional Ordinance</div></div>
+    <div class="ab-inv-item"><div class="ab-inv-num">04</div><div class="ab-inv-tag">/// Tag</div><div class="ab-inv-val">Chosen Man</div></div>
+    <div class="ab-inv-item"><div class="ab-inv-num">05</div><div class="ab-inv-tag">/// Tag</div><div class="ab-inv-val">Lover Boy</div></div>
+    <div class="ab-inv-item"><div class="ab-inv-num">06</div><div class="ab-inv-tag">/// Tag</div><div class="ab-inv-val">Soul Sopa Patine</div></div>
+    <div class="ab-inv-item"><div class="ab-inv-num">07</div><div class="ab-inv-tag">/// Tag</div><div class="ab-inv-val">Ficting Method</div></div>
+    <div class="ab-inv-item"><div class="ab-inv-num">08</div><div class="ab-inv-tag">/// Tag</div><div class="ab-inv-val">Marble</div></div>
+  </div>
+</div>
+
+<section class="ab-manifesto">
+  <div class="ab-mani-label">/// Doctrine</div>
+  <div class="ab-mani-text">
+    TRAP IS NOT A GENRE. <em>TRAP IS A GRAMMAR.</em>
+    FICTION IS NOT AN ESCAPE. <em>FICTION IS AN ORDINANCE.</em>
+    THE ¢ IS NOT A LOGO. <em>THE ¢ IS A SENTENCE.</em>
+    MAGDIEL IS NOT A NAME. <em>MAGDIEL IS A FREQUENCY.</em>
+  </div>
+</section>
+
+<footer class="mc-footer">
+  <a href="/" class="logo">MAGDIEL <span class="cc">¢</span>ents</a>
+  <div class="mc-footer-copy">MAGDIEL ¢ents 1997 — All Dispatches Reserved</div>
+</footer>
+</body>
+</html>

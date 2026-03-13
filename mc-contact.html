@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MAGDIEL ¢ents — Contact</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Caveat:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=IM+Fell+English:ital@1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blk: #080808; --off: #f0ece0; --warm: #c8b89a; --dust: #7a6a58; --teal: #5eccd8;
+  --r1: rgba(240,236,224,0.07); --r2: rgba(240,236,224,0.15);
+}
+html, body { background: var(--blk); color: var(--off); font-family: 'Space Mono', monospace; overflow-x: hidden; }
+.logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: var(--off); text-decoration: none; white-space: nowrap; }
+.logo .cc { background: linear-gradient(170deg,#1a4a9a,#5eccd8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.mc-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 52px; border-bottom: 1px solid var(--r2); background: rgba(8,8,8,0.96); backdrop-filter: blur(12px); }
+.mc-nav-links { display: flex; gap: 28px; list-style: none; }
+.mc-nav-links a { font-size: 8px; letter-spacing: 3px; text-transform: uppercase; color: var(--dust); text-decoration: none; transition: color 0.2s; }
+.mc-nav-links a:hover, .mc-nav-links a.active { color: var(--teal); }
+.mc-sh { font-size: 7px; letter-spacing: 5px; text-transform: uppercase; color: var(--dust); padding: 13px 32px; border-bottom: 1px solid var(--r1); background: var(--blk); display: flex; align-items: center; gap: 14px; }
+.mc-sh::after { content: ''; flex: 1; height: 1px; background: var(--r1); }
+
+/* CONTACT HERO */
+.ct-hero {
+  margin-top: 52px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 52vh;
+  border-bottom: 1px solid var(--r2);
+}
+.ct-hero-l {
+  padding: clamp(52px,7vw,100px);
+  border-right: 1px solid var(--r2);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.ct-kicker { font-size: 8px; letter-spacing: 5px; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; }
+.ct-h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(64px,10vw,128px);
+  line-height: 0.88; letter-spacing: -2px; color: var(--off);
+  margin-bottom: 32px;
+}
+.ct-h1 .teal-line { display: block; background: linear-gradient(90deg,#1a4a9a,#5eccd8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.ct-sub { font-size: 12px; line-height: 2.1; color: rgba(240,236,224,0.45); max-width: 440px; font-style: italic; }
+
+.ct-hero-r {
+  position: relative; overflow: hidden; background: var(--blk);
+  display: flex; align-items: center; justify-content: center;
+}
+.ct-hero-bg {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(160px,24vw,300px); line-height: 1;
+  background: linear-gradient(160deg,#091428,#122244);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; user-select: none; opacity: 0.7;
+}
+.ct-hero-r::before {
+  content: ''; position: absolute; inset: 0; z-index: 1;
+  background: repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.09) 3px,rgba(0,0,0,0.09) 4px);
+  pointer-events: none;
+}
+
+/* CHANNELS ROW */
+.ct-channels {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid var(--r2);
+}
+.ct-channel {
+  padding: 32px 28px; border-right: 1px solid var(--r1);
+  transition: background 0.2s; cursor: pointer; text-decoration: none; color: inherit;
+  display: block;
+}
+.ct-channel:last-child { border-right: none; }
+.ct-channel:hover { background: rgba(240,236,224,0.018); }
+.ct-channel:hover .ct-ch-arrow { opacity: 1; transform: translateX(0); color: var(--teal); }
+.ct-ch-icon { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; color: rgba(240,236,224,0.05); margin-bottom: 10px; }
+.ct-ch-label { font-size: 7px; letter-spacing: 4px; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+.ct-ch-val { font-size: 13px; color: var(--warm); margin-bottom: 10px; }
+.ct-ch-desc { font-size: 9px; line-height: 1.9; color: rgba(240,236,224,0.25); font-style: italic; }
+.ct-ch-arrow { font-size: 18px; color: rgba(240,236,224,0.15); opacity: 0; transform: translateX(-6px); transition: all 0.2s; margin-top: 14px; display: block; }
+
+/* FORM SECTION */
+.ct-form-wrap {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--r2);
+}
+.ct-form-l {
+  padding: clamp(44px,6vw,76px);
+  border-right: 1px solid var(--r1);
+}
+.ct-form-head { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px,4.5vw,56px); line-height: 0.92; color: var(--off); margin-bottom: 16px; }
+.ct-form-sub { font-size: 10px; line-height: 2; color: rgba(240,236,224,0.3); font-style: italic; margin-bottom: 40px; }
+
+.mc-form { display: flex; flex-direction: column; gap: 20px; }
+.mc-field { display: flex; flex-direction: column; gap: 6px; }
+.mc-label { font-size: 7px; letter-spacing: 4px; text-transform: uppercase; color: var(--dust); }
+.mc-input, .mc-textarea {
+  background: transparent;
+  border: none; border-bottom: 1px solid var(--r2);
+  color: var(--off); font-family: 'Space Mono', monospace; font-size: 12px;
+  padding: 12px 0; outline: none; width: 100%;
+  transition: border-color 0.2s;
+}
+.mc-input:focus, .mc-textarea:focus { border-bottom-color: var(--teal); }
+.mc-input::placeholder, .mc-textarea::placeholder { color: rgba(240,236,224,0.2); }
+.mc-textarea { resize: none; height: 120px; }
+.mc-select {
+  background: transparent; border: none; border-bottom: 1px solid var(--r2);
+  color: var(--off); font-family: 'Space Mono', monospace; font-size: 12px;
+  padding: 12px 0; outline: none; width: 100%; appearance: none;
+  cursor: pointer;
+}
+.mc-select option { background: #111; color: var(--off); }
+.mc-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px;
+  color: var(--blk); background: var(--teal);
+  border: none; padding: 14px 32px; cursor: pointer;
+  transition: all 0.2s; margin-top: 8px; width: fit-content;
+}
+.mc-btn:hover { background: #7adde6; gap: 16px; }
+
+.ct-form-r {
+  padding: clamp(44px,6vw,76px);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  position: relative; overflow: hidden;
+}
+.ct-form-r-ghost {
+  position: absolute; top: 10%; left: 50%; transform: translateX(-50%);
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 96px; color: rgba(240,236,224,0.03);
+  pointer-events: none; white-space: nowrap;
+}
+.ct-aside-label { font-size: 7px; letter-spacing: 4px; text-transform: uppercase; color: rgba(240,236,224,0.18); border-bottom: 1px solid var(--r1); padding-bottom: 10px; margin-bottom: 20px; position: relative; z-index: 2; }
+.ct-aside-item { margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(240,236,224,0.04); position: relative; z-index: 2; }
+.ct-aside-item:last-child { border-bottom: none; margin-bottom: 0; }
+.ct-aside-item strong { display: block; font-size: 8px; color: var(--teal); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.ct-aside-item span { font-size: 11px; color: rgba(240,236,224,0.35); line-height: 1.8; font-style: italic; }
+
+/* FOOTER */
+.mc-footer { display: flex; align-items: center; justify-content: space-between; padding: 18px 32px; border-top: 1px solid var(--r2); background: var(--blk); }
+.mc-footer-copy { font-size: 7px; letter-spacing: 2px; text-transform: uppercase; color: rgba(240,236,224,0.1); }
+
+@media (max-width: 768px) {
+  .ct-hero,.ct-form-wrap { grid-template-columns: 1fr; }
+  .ct-hero-l { border-right: none; border-bottom: 1px solid var(--r2); }
+  .ct-channels { grid-template-columns: 1fr; }
+  .ct-channel { border-right: none; border-bottom: 1px solid var(--r1); }
+  .ct-form-l { border-right: none; border-bottom: 1px solid var(--r1); }
+  .mc-nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+<nav class="mc-nav">
+  <a href="/" class="logo">MAGDIEL <span class="cc">¢</span>ents</a>
+  <ul class="mc-nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/archive">Archive</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/community">Community</a></li>
+    <li><a href="/contact" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="ct-hero">
+  <div class="ct-hero-l">
+    <div>
+      <div class="ct-kicker">/// Open frequency</div>
+      <h1 class="ct-h1">SEND A<br><span class="teal-line">DIS<br>PATCH.</span></h1>
+    </div>
+    <p class="ct-sub">For submissions, collabs, annotations, corrections, or any signal that warrants a response. The ¢ is always open for the right frequency.</p>
+  </div>
+  <div class="ct-hero-r">
+    <span class="ct-hero-bg">¢</span>
+  </div>
+</div>
+
+<div class="mc-sh">/// Channels</div>
+<div class="ct-channels">
+  <a href="mailto:hello@magdielcents.com" class="ct-channel">
+    <div class="ct-ch-icon">@</div>
+    <div class="ct-ch-label">/// Email</div>
+    <div class="ct-ch-val">hello@magdielcents.com</div>
+    <div class="ct-ch-desc">Dispatches, submissions, corrections. Response time: when the frequency is right.</div>
+    <span class="ct-ch-arrow">→</span>
+  </a>
+  <a href="/community" class="ct-channel">
+    <div class="ct-ch-icon">¢</div>
+    <div class="ct-ch-label">/// Community</div>
+    <div class="ct-ch-val">Annotation Forum</div>
+    <div class="ct-ch-desc">Drop a note in the margins. Annotate the dispatches. The forum is live.</div>
+    <span class="ct-ch-arrow">→</span>
+  </a>
+  <a href="#" class="ct-channel">
+    <div class="ct-ch-icon">///</div>
+    <div class="ct-ch-label">/// Collaborations</div>
+    <div class="ct-ch-val">Open for the right signal</div>
+    <div class="ct-ch-desc">Zines, readings, sound, cross-dispatch collabs. Use the form below.</div>
+    <span class="ct-ch-arrow">→</span>
+  </a>
+</div>
+
+<div class="mc-sh">/// Send a Dispatch</div>
+<div class="ct-form-wrap">
+  <div class="ct-form-l">
+    <h2 class="ct-form-head">DROP THE<br>SIGNAL.</h2>
+    <p class="ct-form-sub">Fill it out. Sign it. Send it. The ¢ will respond at its own frequency.</p>
+    <form class="mc-form" onsubmit="handleSubmit(event)">
+      <div class="mc-field">
+        <label class="mc-label">/// Name or Handle</label>
+        <input class="mc-input" type="text" placeholder="Your name or dispatch name" required>
+      </div>
+      <div class="mc-field">
+        <label class="mc-label">/// Email</label>
+        <input class="mc-input" type="email" placeholder="your@email.com" required>
+      </div>
+      <div class="mc-field">
+        <label class="mc-label">/// Type of Dispatch</label>
+        <select class="mc-select">
+          <option value="">Select a category</option>
+          <option>Submission</option>
+          <option>Collaboration</option>
+          <option>Annotation / Correction</option>
+          <option>General Correspondence</option>
+          <option>Other Signal</option>
+        </select>
+      </div>
+      <div class="mc-field">
+        <label class="mc-label">/// Message</label>
+        <textarea class="mc-textarea" placeholder="Write your dispatch here..." required></textarea>
+      </div>
+      <button class="mc-btn" type="submit">SEND DISPATCH →</button>
+    </form>
+  </div>
+  <div class="ct-form-r">
+    <span class="ct-form-r-ghost">FREQUENCY</span>
+    <div class="ct-aside-label">// Frequency Notes</div>
+    <div class="ct-aside-item">
+      <strong>Response Time</strong>
+      <span>When the signal resonates. Not before. Not always after.</span>
+    </div>
+    <div class="ct-aside-item">
+      <strong>Submissions</strong>
+      <span>Long-form only. No summaries. If it fits in a tweet, it's not a dispatch.</span>
+    </div>
+    <div class="ct-aside-item">
+      <strong>Collaborations</strong>
+      <span>Open for cross-dispatch work, zines, sound, and fictional ordinances.</span>
+    </div>
+    <div class="ct-aside-item">
+      <strong>Community</strong>
+      <span>Annotations and forum discussions live in the Community page.</span>
+    </div>
+  </div>
+</div>
+
+<footer class="mc-footer">
+  <a href="/" class="logo">MAGDIEL <span class="cc">¢</span>ents</a>
+  <div class="mc-footer-copy">MAGDIEL ¢ents 1997 — All Dispatches Reserved</div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.mc-btn');
+  btn.textContent = 'DISPATCH SENT ¢';
+  btn.style.background = 'rgba(94,204,216,0.2)';
+  btn.style.color = '#5eccd8';
+  setTimeout(() => { e.target.reset(); btn.textContent = 'SEND DISPATCH →'; btn.style.background = ''; btn.style.color = ''; }, 3000);
+}
+</script>
+</body>
+</html>
